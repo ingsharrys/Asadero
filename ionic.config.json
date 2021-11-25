@@ -1,0 +1,7 @@
+{
+  "name": "Asadero",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

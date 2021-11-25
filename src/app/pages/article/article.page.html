@@ -1,0 +1,131 @@
+<ion-header no-border>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-row>
+
+      <ion-col size="3">
+
+      </ion-col>
+
+     <ion-col size="7" style="padding: 0;">
+    <img src="/assets/images/logo.png" style="width: 70%;"
+         >
+    </ion-col>
+
+    <ion-col size="2" style="padding: 0;">
+        <img src="/assets/images/cuenta.png" style="width: 100%;"
+             (click)="openCart()">
+    </ion-col>
+
+  </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-row style="margin:6px" >
+
+    <ion-col size="4">
+
+       <p style="color:white;
+                 font-size:10pt;
+                 text-align:center;
+                 border: 2px dashed rgb(239, 157, 10);
+                 border-radius:20px"
+          routerLink="/main/tabs/tab2"
+                 > Seguir<br>Comprando </p>
+
+    </ion-col>
+
+   <ion-col size="5" style="padding: 0;">
+
+  </ion-col>
+
+  <ion-col size="3" style="padding: 0;">
+
+
+<div style="width: 60px;
+            height: 60px;
+            border: 2px dashed rgb(239, 157, 10);
+            border-radius: 90px;
+            margin-left: 12%;
+            background:#000"
+      routerLink="/pedidos/">
+<p style="color:orange;
+          font-size:8pt;
+          text-align:center;"
+          >
+         <strong style="background: red;
+                        color: white;
+                        padding: 3px;
+                        padding-left: 7px;
+                        border-radius: 15px;
+                        font-weight: 900;">
+          {{ cartItemCount | async }}
+         </strong>
+    <ion-icon name="cart"
+              style="width: 20px;
+                     height: 20px;">
+    </ion-icon>
+
+</p>
+
+</div>
+
+
+
+<p style="font-weight: 900;
+          margin-block-start:7px;
+          font-size:16pt;
+          background:white;
+          color:#000;
+          text-align:center;
+          border: 2px dashed rgb(239, 157, 10);
+          border-radius:20px"
+          (click)="addToCart(productos)"> Agregar</p>
+
+  </ion-col>
+
+  <ion-col size="12" style="padding: 0;">
+     <img src="https://sharrys.com/admin/upload/{{productos.news_image}}">
+  </ion-col>
+
+  <ion-col size="12" style="padding:4%;
+                            margin-top:5%;
+                            border: 2px dashed #EF9D0A;
+                            font-family:Buble Jelly Shadow;font-size: 25pt;
+
+                            color:white">
+    {{productos.news_title}}
+  </ion-col>
+
+  <ion-col size="12" style="padding:5%;color:white;font-family: Gabriola;
+                            font-size:21pt;
+                            ">
+    <div [innerHTML]="productos.news_description" style="line-height: 1;margin-top: -20px;">
+ {{productos.news_description}}
+    </div>
+    <p style="font-family: Alesandra;
+              font-size: 15pt;
+              text-align: center;
+              border: 2px dashed rgb(239, 157, 10);
+              width: 30%;
+              position: absolute;
+              right: 0;">{{productos.tienda_price | currency: 'USD' : 'symbol' : '1.0-0'}}</p>
+ </ion-col>
+
+
+
+
+
+  </ion-row>
+
+
+
+
+
+
+</ion-content>
