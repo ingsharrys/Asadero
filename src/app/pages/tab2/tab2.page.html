@@ -1,0 +1,106 @@
+<ion-header no-border>
+  <ion-toolbar color="dark">
+    <ion-row>
+
+
+
+        <ion-col size="3" style="padding: 0;">
+
+
+        <div *ngIf="cartItemCount >= '1'"
+           style="width: 70px;">
+
+        <p style="color:orange;
+                font-size:10pt;
+                text-align:center;"
+                routerLink="/pedidos/">
+               <strong style="background: red;
+                              color: white;
+                              position: absolute;
+                              padding-right: 3px;
+                              margin-left: -8px;
+                              z-index: 50;
+                              padding-left: 3px;
+                              border-radius: 15px;
+                              font-weight: 600;">
+                {{ cartItemCount | async }}
+               </strong>
+          <ion-icon name="cart"
+                    style="width: 30px;
+                           height: 30px;">
+          </ion-icon>
+
+        </p>
+</div>
+
+
+<div *ngIf="cartItemCount == '0'"
+     style="width: 70px;">
+<p style="color:white;
+          font-size:10pt;
+          text-align:center;"
+
+         >
+          {{ cartItemCount | async }}
+    <ion-icon name="cart"
+              style="width: 30px;
+                     height: 30px;">
+    </ion-icon>
+
+</p>
+
+</div>
+
+
+  </ion-col>
+
+
+
+     <ion-col size="7" style="padding: 0;">
+    <img src="/assets/images/logo.png" style="width: 70%;">
+    </ion-col>
+
+    <ion-col size="2" style="padding: 0;">
+        <img src="/assets/images/cuenta.png" style="width: 100%;"
+             (click)="openCart()">
+    </ion-col>
+
+  </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-grid fixed>
+
+<ion-row *ngFor="let post of categorias">
+
+
+<ion-col size="3">
+
+    <img src="https://sharrys.com/admin/upload/category/{{post.category_image}}">
+
+  </ion-col>
+
+  <ion-col size="9" style="background-image:url('/assets/images/listcategori.png');background-size: contain;
+                           background-repeat: no-repeat;background-position: center center;"
+                    routerLink="/productos/{{post.cid}}">
+
+
+       <p style=" font-size: 15pt;
+                  color: white;
+                  text-align: center;
+                  font-family: 'Lemonada';
+                  margin-top: 10%;
+                  margin-left: -15px;">
+       {{post.category_name}}
+      <p>
+
+
+  </ion-col>
+
+  </ion-row>
+
+</ion-grid>
+
+</ion-content>

@@ -1,0 +1,307 @@
+<ion-header no-border>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-row>
+
+      <ion-col size="3">
+
+      </ion-col>
+
+     <ion-col size="7" style="padding: 0;">
+    <img src="/assets/images/logo.png" style="width: 70%;">
+    </ion-col>
+
+    <ion-col size="2" style="padding: 0;">
+        <img src="/assets/images/cuenta.png" style="width: 100%;"
+             (click)="openCart()">
+    </ion-col>
+
+  </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <form (ngSubmit)="pedido( fpedido )" #fLogin="ngForm" >
+
+  <ion-grid fixed>
+    <ion-list class="bg-transparent">
+     <ion-radio-group [(ngModel)]="pedidoCartapp.envio" name="envio" >
+       <ion-row>
+
+
+
+         <ion-col size="12">
+         <p style="color:#f59b0b;
+                   font-family: 'Lemonada';
+                   text-align:center;
+                    margin-block-start: 1em;
+                    margin-block-end: 0em;" >
+                  TU CANASTA</p>
+         </ion-col>
+
+
+
+         <ion-col size="12">
+<p style="color:#f59b0b;
+          font-family: 'Lemonada';
+          margin-block-start: 0em;
+          margin-block-end: 0em;" >Primer paso:</p>
+         </ion-col>
+         <ion-col>
+
+          <ion-item color="none" >
+            <ion-label style="color:#fff;font-size:9pt;" >Servicio Domicilio</ion-label>
+            <ion-radio slot="start" value="Domicilio" ></ion-radio>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item color="none">
+            <ion-label style="color:#fff;font-size:9pt" >Recoger en tienda</ion-label>
+            <ion-radio slot="start" value="Recoger"
+                       ></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-radio-group>
+   </ion-list>
+
+
+
+
+
+      <ion-col size="12">
+      <p style="color:#f59b0b;
+                font-family: 'Lemonada';
+                 margin-block-start: 0em;
+                 margin-block-end: 0em;" >Segundo paso:</p>
+      </ion-col>
+
+
+      <p style="color:white;text-align:center;">
+        Elija un metodo de pago
+      </p>
+
+
+      <ion-row>
+        <ion-col size="4" style="padding: 0;">
+      <p style="color:#fff;font-size:10pt;text-align:center;margin-left: 12%;" >
+       Efectivo
+      </p>
+       </ion-col>
+
+       <ion-col size="4" style="padding: 0;">
+         <p style="color:#fff;font-size:10pt;text-align:center;margin-left: 12%;" >
+          Transferencia
+         </p>
+     </ion-col>
+
+       <ion-col size="4" style="padding: 0;">
+         <p style="color:#fff;font-size:10pt;text-align:center;margin-left: 12%;" >
+        Tarjeta
+         </p>
+       </ion-col>
+     </ion-row>
+
+      <ion-list class="bg-transparent">
+       <ion-radio-group [(ngModel)]="pedidoCartapp.pago" name="pago" >
+         <ion-row>
+           <ion-col size="4" style="padding: 0;">
+
+            <ion-item color="none" >
+
+              <ion-label style="color:#fff;font-size:18pt" ><ion-icon name="cash-outline"></ion-icon></ion-label>
+              <ion-radio slot="start" value="Efectivo"
+                         ></ion-radio>
+
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="4" style="padding: 0;">
+          <ion-item color="none" >
+            <ion-label style="color:#fff;font-size:18pt" ><ion-icon name="desktop-outline"></ion-icon></ion-label>
+            <ion-radio slot="start" value="Transferencia" ></ion-radio>
+          </ion-item>
+        </ion-col>
+
+          <ion-col size="4" style="padding: 0;">
+            <ion-item color="none">
+
+              <ion-label style="color:#fff;font-size:18pt" ><ion-icon name="card-outline"></ion-icon></ion-label>
+              <ion-radio slot="start" value="Tarjeta" ></ion-radio>
+
+
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="12">
+          <p style="color:#f59b0b;
+                    font-family: 'Lemonada';
+                     margin-block-start: 1em;
+                     margin-block-end: 0em;" >Resumen:</p>
+          </ion-col>
+        </ion-row>
+      </ion-radio-group>
+      </ion-list>
+
+
+
+
+    <ion-row class="ion-align-items-center"  class="ion-text-wrap" style="margin-left: 5%;">
+
+
+
+
+
+       <ion-col size="6" *ngFor="let p of cart" style="border-bottom: 1px solid #ffffff38;" [(ngModel)]="pedidoCartapp.producto" name="producto">
+            <ion-row >
+<ion-col size="12">
+<p style="color:white;text-align:center">{{ p.news_title }}</p>
+  </ion-col>
+
+
+
+
+
+
+                 <img src="https://sharrys.com/admin/upload/{{p.news_image}}">
+
+                 <ion-button color="danger" fill="clear" (click)="decreaseCartItem(p)">
+                   <ion-icon name="remove-circle" slot="icon-only"></ion-icon>
+                 </ion-button>
+                      <p style="color:white;
+                                text-align: center;">  {{ p.amount }}
+                      </p>
+                 <ion-button color="success" fill="clear" (click)="increaseCartItem(p)">
+                   <ion-icon name="add-circle" slot="icon-only"></ion-icon>
+                 </ion-button>
+
+                 <ion-col size="12">
+                 <p style="color:white;text-align:center">{{ p.amount * p.tienda_price | currency: 'USD' : 'symbol' : '1.0-0'}}</p>
+                   </ion-col>
+
+
+
+
+
+            </ion-row>
+         </ion-col>
+      </ion-row>
+<ion-row>
+      <ion-col size="1">
+
+        </ion-col>
+
+        <ion-col size="10">
+          <ion-textarea type="text"  placeholder="Especificaciones para este pedido"
+                        [(ngModel)]="pedidoCartapp.especi" name="especi"
+                        style="background: #dedede;
+                               color: #000;
+                               margin-bottom:5%;
+
+                               border-radius: 15px;
+                               padding-left: 5px;">
+
+
+          </ion-textarea>
+          </ion-col>
+
+          <ion-col size="1">
+
+            </ion-col>
+</ion-row>
+
+
+      <div style="border: 1px solid white;padding-bottom: 5%;margin-left: 8%;
+                  margin-right: 8%;">
+        <p style="color:white;text-align:center">Total pedido</p>
+        <p style="color:white;text-align:center;font-size:28pt;margin-block-start: 0em;
+                  margin-block-end: 0em;">{{ getTotal() | currency: 'USD' : 'symbol' : '1.0-0'}}</p>
+
+
+
+
+    <ion-row>
+
+
+      <ion-col size="6" style="padding: 0;">
+  <center>
+        <ion-button color="warning" size="small" (click)="openCart()">
+          Editar Tus datos
+        </ion-button>
+        </center>
+     </ion-col>
+
+
+
+
+     <ion-col size="6" style="padding: 0;">
+       <div *ngIf=" pedidoCartapp.pago">
+  <center>
+       <ion-button color="success" size="small" (click)="checkout()"
+                    *ngIf=" pedidoCartapp.envio == 'Domicilio'">
+
+         Hacer pedido
+
+       </ion-button>
+       </center>
+        </div>
+
+
+     <div *ngIf=" pedidoCartapp.pago">
+  <center>
+       <ion-button color="success" size="small" (click)="checkout()"
+                    *ngIf=" pedidoCartapp.envio == 'Recoger'">
+         Hacer pedido
+       </ion-button>
+       </center>
+     </div>
+    </ion-col>
+
+
+    </ion-row>
+
+
+
+
+
+  <p *ngIf=" pedidoCartapp.envio == 'Domicilio'"
+      style="color:white;text-align:center;">Más valor de domicilio</p>
+
+      <p *ngIf=" pedidoCartapp.envio == 'Recoger'"
+          style="color:white;text-align:center;"> Recoge tu pedido en nuestras instalaciones </p>
+
+
+          <img src="/assets/images/davivienda.png" *ngIf=" pedidoCartapp.pago == 'Transferencia'"
+               style="color:white;text-align:center;">
+
+
+        </div>
+
+
+
+
+
+          </ion-grid>
+
+
+
+
+
+
+
+
+
+
+  </form>
+
+
+
+
+
+
+</ion-content>

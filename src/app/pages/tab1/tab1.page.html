@@ -1,0 +1,125 @@
+<ion-header color="dark">
+
+  <ion-toolbar color="dark">
+
+    <ion-row>
+
+      <ion-col size="2">
+        <img src="/assets/images/cerrar.png" style="width: 100%;"
+             (click)="cerrarSesion()">
+      </ion-col>
+
+      <ion-col size="1">
+
+      </ion-col>
+
+     <ion-col size="7" style="padding: 0;">
+    <img src="/assets/images/logo.png" style="width: 70%;">
+    </ion-col>
+
+    <ion-col size="2" style="padding: 0;">
+
+        <img src="/assets/images/cuenta.png" style="width: 100%;"
+             (click)="openCart()">
+    </ion-col>
+
+  </ion-row>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngFor="let posts of destacados">
+<img src="https://sharrys.com/admin/upload/{{posts.news_image}}"
+          routerLink="/productos/21">
+
+  <ion-grid fixed>
+
+  <ion-row>
+
+  <ion-col>
+
+    <p style="color:white;font-family:Buble Jelly Shadow;font-size: 25pt;text-align: center;margin-top: 5px;">contacto</p>
+
+    </ion-col>
+
+
+
+    </ion-row>
+
+    <ion-row style="padding:8px;
+                    border: 2px dashed white;">
+
+      <ion-col size="6">
+       <a href="tel:+5788664400">
+        <img src="/assets/images/pbx.png" style="width:100%;">
+      </a>
+    </ion-col>
+
+    <ion-col size="6">
+      <a href="https://api.whatsapp.com/send?phone=3202764031&text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n">
+      <img src="/assets/images/numero.png" style="width:100%;padding-top:4px;">
+      </a>
+    </ion-col>
+
+    <ion-col size="6">
+
+    </ion-col>
+
+    <ion-col size="3">
+      <a href="https://api.whatsapp.com/send?phone=+573202764031&text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n">
+      <img src="/assets/images/whatsapp.png" style="width:100%;position: absolute;margin-top: -26px;">
+      </a>
+    </ion-col>
+    <ion-col size="3">
+      <a href="https://t.me/restaurante_elasadero">
+      <img src="/assets/images/telegram.png" style="width:100%;position: absolute;margin-top: -29px;">
+      </a>
+    </ion-col>
+
+    </ion-row>
+
+
+    <ion-row>
+
+      <ion-col size="12">
+        <p style="color:white;font-family:Buble Jelly Shadow;font-size: 20pt;margin-top:15px;">Visítanos en</p>
+    </ion-col>
+
+    <ion-col size="2">
+
+    </ion-col>
+
+    <ion-col size="3">
+      <a href="https://www.facebook.com/restauranteelasadero">
+      <img src="/assets/images/facebook.png" style="width:100%;">
+      </a>
+    </ion-col>
+
+    <ion-col size="3">
+      <a href="https://www.instagram.com/restauranteelasadero/">
+      <img src="/assets/images/instagram.png" style="width:100%;">
+      </a>
+    </ion-col>
+
+    <ion-col size="3">
+      <a href="https://www.google.com/maps/place/Restaurante+El+Asadero/@2.9284339,-75.2880825,15z/data=!4m5!3m4!1s0x0:0x9a38cc76988f839a!8m2!3d2.9284339!4d-75.2880825">
+      <img src="/assets/images/google.png" style="width:100%;">
+      </a>
+    </ion-col>
+
+    <ion-col size="1">
+
+    </ion-col>
+
+    <ion-col size="12">
+      <p style="color:white;font-family:Buble Jelly Shadow;font-size:15pt;margin-top:10px;text-align: center">@RestauranteelAsadero</p>
+  </ion-col>
+
+    </ion-row>
+
+
+
+  </ion-grid>
+
+
+</ion-content>

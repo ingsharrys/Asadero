@@ -1,0 +1,233 @@
+<ion-content fullscreen color="dark">
+
+  <div class="ion-text-end">
+    <ion-button (click)="close()" fill="clear" color="dark">
+      <ion-icon name="close" slot="start" style="color: white;"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="ion-padding">
+    <form (ngSubmit)="userupdate( fUserupdate )" #fRegistro="ngForm">
+
+
+
+
+      <ion-row>
+        <ion-col size="12">
+          <p style="text-align:center;margin-block-start: -2em;">Edita tus Datos<p>
+        </ion-col>
+        <ion-col size="1">
+        </ion-col>
+       <ion-col size="1" style="padding: 0;">
+      <img src="/assets/images/cuadronaranja.jpg" style="width: 100%;">
+      </ion-col>
+      <ion-col size="9" style="padding: 0;">
+                     <p style="background:black;color:white;
+                               padding: 5px;
+                               margin: 0;
+                               text-align: initial;">
+                           Email
+
+                      </p>
+      </ion-col>
+
+      <ion-col size="1">
+      </ion-col>
+
+      <ion-col size="1">
+      </ion-col>
+
+      <ion-col size="10"
+               style="padding: 0;">
+
+               <ion-input name="email"
+                           type="email"
+                           style="background:white;color:black"
+                           value="{{User.email}}"
+                           [(ngModel)]="UpdatesUser.email"
+                           required></ion-input>
+
+                           <ion-input name="user_id"
+                                       type="hidden"
+                                       style="background:white;color:black"
+                                       value="{{User.user_id}}"
+                                       [(ngModel)]="UpdatesUser.user_id"
+                                       required></ion-input>
+      </ion-col>
+
+      <ion-col size="1">
+      </ion-col>
+      <ion-col size="12">
+        <br>
+      </ion-col>
+      </ion-row>
+
+
+
+
+
+
+
+
+
+      <ion-row>
+
+        <ion-col size="1">
+        </ion-col>
+       <ion-col size="1" style="padding: 0;">
+      <img src="/assets/images/cuadronaranja.jpg" style="width: 100%;">
+      </ion-col>
+      <ion-col size="9" style="padding: 0;">
+                <p style="background:black;color:white;
+                          padding: 5px;
+                          margin: 0;
+                          text-align: initial;">
+                           Nombres y Apellidos</p>
+      </ion-col>
+
+      <ion-col size="1">
+      </ion-col>
+
+      <ion-col size="1">
+      </ion-col>
+
+      <ion-col size="10"
+               style="padding: 0;">
+
+        <ion-input name="nombre"
+                    type="text"
+                    style="background:white;color:black"
+                    value="{{User.name}}"
+                    [(ngModel)]="UpdatesUser.nombre"
+                    required></ion-input>
+      </ion-col>
+
+      <ion-col size="1">
+      </ion-col>
+      <ion-col size="12">
+        <br>
+      </ion-col>
+      </ion-row>
+
+
+
+
+
+
+
+      <ion-row>
+
+        <ion-col size="1">
+        </ion-col>
+       <ion-col size="1" style="padding: 0;">
+      <img src="/assets/images/cuadronaranja.jpg" style="width: 100%;">
+      </ion-col>
+      <ion-col size="9" style="padding: 0;">
+                <p style="background:black;color:white;
+                          padding: 5px;
+                          margin: 0;
+                          text-align: initial;">
+                           Dirección<strong style="font-size:9pt;color:gray"> (No usar caracter #)</strong></p>
+      </ion-col>
+
+      <ion-col size="1">
+      </ion-col>
+
+      <ion-col size="1">
+      </ion-col>
+
+      <ion-col size="10"
+               style="padding: 0;">
+
+
+
+        <ion-input name="address"
+                    type="text"
+                    style="background:white;color:black"
+                    placeholder="No usar caracter #"
+                    value="{{User.address}}"
+                    [(ngModel)]="UpdatesUser.address"
+                    required></ion-input>
+      </ion-col>
+
+      <ion-col size="1">
+      </ion-col>
+
+      <ion-col size="12">
+        <br>
+      </ion-col>
+
+      </ion-row>
+
+
+
+
+
+
+
+      <ion-row>
+
+        <ion-col size="1">
+        </ion-col>
+       <ion-col size="1" style="padding: 0;">
+      <img src="/assets/images/cuadronaranja.jpg" style="width: 100%;">
+      </ion-col>
+      <ion-col size="9" style="padding: 0;">
+                <p style="background:black;color:white;
+                          padding: 5px;
+                          margin: 0;
+                          text-align: initial;">
+                           No. Celular</p>
+      </ion-col>
+
+      <ion-col size="1">
+      </ion-col>
+
+      <ion-col size="1">
+      </ion-col>
+
+      <ion-col size="10"
+               style="padding: 0;">
+
+        <ion-input name="number"
+                    type="text"
+                    style="background:white;color:black"
+                    value="{{User.password}}"
+                    [(ngModel)]="UpdatesUser.password"
+                    required></ion-input>
+      </ion-col>
+
+      <ion-col size="1">
+      </ion-col>
+
+      <ion-col size="12">
+        <br>
+      </ion-col>
+      </ion-row>
+
+
+
+
+
+
+
+
+
+        <ion-row>
+        <ion-col>
+            <ion-button type="submit"
+                        color="warning"
+                        shape="round">
+                Enviar
+            </ion-button>
+        </ion-col>
+    </ion-row>
+
+    </form>
+
+
+
+
+  </div>
+
+</ion-content>
