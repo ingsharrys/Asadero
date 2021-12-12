@@ -4,8 +4,8 @@
   <ion-slides class="mainSlide" #slidePrincipal>
 
     <ion-slide>
+      <form (ngSubmit)="login( $event )">
 
-      <form (ngSubmit)="login( fLogin )" #fLogin="ngForm" >
         <ion-grid fixed>
 
           <ion-row>
@@ -161,8 +161,7 @@ text-align: initial;">
             </ion-row>
 
 
-
-            <form (ngSubmit)="registro( fRegistro )" #fRegistro="ngForm">
+<form (ngSubmit)="registro( $event )">
 
 
 

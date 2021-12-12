@@ -7,8 +7,7 @@
         <ion-col size="3" style="padding: 0;">
 
 
-        <div *ngIf="cartItemCount >= '1'"
-           style="width: 70px;">
+
 
         <p style="color:orange;
                 font-size:10pt;
@@ -31,25 +30,7 @@
           </ion-icon>
 
         </p>
-</div>
 
-
-<div *ngIf="cartItemCount == '0'"
-     style="width: 70px;">
-<p style="color:white;
-          font-size:10pt;
-          text-align:center;"
-
-         >
-          {{ cartItemCount | async }}
-    <ion-icon name="cart"
-              style="width: 30px;
-                     height: 30px;">
-    </ion-icon>
-
-</p>
-
-</div>
 
 
   </ion-col>

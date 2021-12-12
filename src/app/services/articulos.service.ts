@@ -196,7 +196,7 @@ this.presentAlertMultipleButtons();
 
   this.http.get<RespuestaTopHeadlines>(`https://restauranteelasadero.com/admin/api/update_user_data/?api_key=cda11JcQEtGUzk5ZM3pTXyIHKwADgf4qh7Pam2YOeu0FsjBW6o&id=${usuario['user_id']}&email=${usuario['email']}&name=${usuario['nombre']}&direccion=${usuario['address']}&password=${usuario['password']}`)
   .subscribe( resp => {
-  console.log(resp['result']['0']['user_id']);
+  console.log(resp);
 
 
 });
