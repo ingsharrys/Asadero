@@ -2,17 +2,23 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 //import { DataLocalService } from '../../services/data-local.service';
 import { ArticulosService } from '../../services/articulos.service';
+//import { AdicionalesPage } from '../adicionales/adicionales.page';
+
 import { CartService } from '../../services/cart.service';
+//import { AddicService } from '../../services/addic.service';
+//import { AddicunoService } from '../../services/addicuno.service';
+//import { AddicdosService } from '../../services/addicdos.service';
 import { HttpClient } from '@angular/common/http';
-import { Articles, Comentarios, RespuestaTopHeadlines } from '../../interfaces/interfaces';
+import { BehaviorSubject } from 'rxjs';
+import { Articles, Comentarios, RespuestaTopHeadlines, Article } from '../../interfaces/interfaces';
 import { Storage } from '@ionic/storage';
 //import { RespuestaTopHeadlines } from '../../interfaces/interfaces';
-import { NavController, AlertController, ModalController  } from '@ionic/angular';
+import { NavController, AlertController, ModalController , LoadingController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 
 
 import { CartModalPage } from '../cart-modal/cart-modal.page';
-import { BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-article',
@@ -20,18 +26,34 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./article.page.scss'],
 })
 export class ArticlePage implements OnInit {
-  @ViewChild('cart', {static: false, read: ElementRef})fab: ElementRef;
-  cart = [];
+//  @ViewChild('cart', {static: false, read: ElementRef})fab: ElementRef;
+  //cart = [];
+
 //  products = [];
-  cartItemCount: BehaviorSubject<number>;
+  //cartItemCount: BehaviorSubject<number>;
+  cartaditionCount: BehaviorSubject<number>;
+  cartaditionCountuno: BehaviorSubject<number>;
+
 //  cartItemCount: BehaviorSubject<number>;
-  productos: Articles[] = [];
+  cart: Article[] = [];
+  carts: Article[] = [];
+//adiproduc = Article[] = [];
+  cartb: Article[] = [];
+  products: Article[] = [];
+  productos: Articles = {
+    amount: 0,
+
+  };
   comentario: Comentarios[] = [];
   idproduc: '';
   commentUser = {
   messaged: ''
   };
 //  message : this.message;
+isLoading = false;
+items : Array<string>  = new Array<string>();
+@ViewChild('cart', {static: false, read: ElementRef})fab: ElementRef;
+public cartItemCount = new BehaviorSubject(0);
 
   constructor( private route: ActivatedRoute,
                private articulosService: ArticulosService,
@@ -40,58 +62,134 @@ export class ArticlePage implements OnInit {
                public alertController: AlertController,
                private storage: Storage,
                private cartService: CartService,
+               public loadingController: LoadingController,
+            /*   private addicService: AddicService,
+               private addicunoService: AddicunoService,
+               private addicdosService: AddicdosService,*/
                private modalCtrl: ModalController
                //public dataLocal: DataLocalService
              ) { }
 
   ngOnInit() {
 
+
     let id = this.route.snapshot.paramMap.get('id');
      this.cargarpost(id);
-    // this.products = this.cartService.getProducts(id);
+     console.log(id);
+     let idmonto = id;
+     let productos;
+
+this.present();
 
 
-    // this.cargarcomment(id);
-
-  //this.products = this.cartService.getProducts();
-   //this.cart = this.cartService.getCart();
-   //this.cartItemCount = this.cartService.getCartItemCount();
-
-
-
-
-  // this.products = this.cartService.getProducts();
-       this.cart = this.cartService.getCart();
-       this.cartItemCount = this.cartService.getCartItemCount();
-
-
-
-
-
+  this.cart = this.cartService.getCart();
+  this.cartItemCount = this.cartService.getCartItemCount();
 
   }
 
 
+/*
 
+
+  async openAdi() {
+  //  this.animateCSS('bounceOutLeft', true);
+
+    let modal = await this.modalCtrl.create({
+      component: AdicionalesPage,
+      cssClass: 'cart-modal'
+    });
+    modal.onWillDismiss().then(() => {
+      this.fab.nativeElement.classList.remove('animated', 'bounceOutLeft')
+    //  this.animateCSS('bounceInLeft');
+    });
+    modal.present();
+  }
+
+*/
 
   cargarpost(id:string){
   //  console.log(id);
-    this.articulosService.getArtHeadlines(id).subscribe( respuesta => {
+    this.articulosService.getArtHeadlines(id).subscribe( (respuesta: any) => {
   //    console.log(respuesta);
       this.productos = respuesta.post;
-//      console.log(this.productos);
+      this.dismiss();
   //    this.productos.push(...respuesta.post);
+  let catids = this.productos['cat_id'];
+  //this.cargueadic(catids);
+  console.log(catids);
     } );
+
+/*
+*/
   }
+/*
+  cargueadic(catids:string){
+  console.log(catids);
+
+  this.articulosService.getTopHeadlinesCategorypost(catids)
+      .subscribe( resp => {
+        console.log('adicionales', resp);
+      //   this.category = resp.categories;
+      //   console.log(resp.category);
+        this.products.push( ...resp.posts );
 
 
+      } );
 
-  addToCart(product) {
-//    console.log(product);
-    this.cartService.addProduct(product);
+    }
+*/
+    async present() {
+        this.isLoading = true;
+        return await this.loadingController.create({
+          // duration: 5000,
+        }).then(a => {
+          a.present().then(() => {
+            console.log('presented');
+            if (!this.isLoading) {
+              a.dismiss().then(() => console.log('abort presenting'));
+            }
+          });
+        });
+      }
+
+      async dismiss() {
+        this.isLoading = false;
+        return await this.loadingController.dismiss().then(() => console.log('dismissed'));
+      }
+/*
+  cargaradicionales(product) {
+  //    console.log(product);
+    this.addicService.addProduct(product);
     this.presentAlertagregas();
-//    this.animateCSS('tada');
+  //    this.animateCSS('tada');
   }
+  cargaradicionalesuno(product) {
+  //    console.log(product);
+    this.addicunoService.addProduct(product);
+    this.presentAlertagregas();
+  //    this.animateCSS('tada');
+  }
+  cargaradicionalesdos(product) {
+  //    console.log(product);
+    this.addicdosService.addProduct(product);
+    this.presentAlertagregas();
+  //    this.animateCSS('tada');
+  }
+*/
+addToCart(product) {
+   console.log(this.productos);
+  this.cartService.addProduct(product);
+  this.presentAlertagregas();
+//    this.animateCSS('tada');
+}
+
+
+menosToCart(product) {
+//    console.log(product);
+  this.cartService.decreaseProduct(product);
+  //this.presentAlertagregas();
+//    this.animateCSS('tada');
+}
 
   async openCart() {
   //  this.animateCSS('bounceOutLeft', true);
@@ -110,7 +208,6 @@ export class ArticlePage implements OnInit {
   animateCSS(animationName, keepAnimated = false) {
     const node = this.fab.nativeElement;
     node.classList.add('animated', animationName)
-
     //https://github.com/daneden/animate.css
     function handleAnimationEnd() {
       if (!keepAnimated) {
@@ -123,14 +220,10 @@ export class ArticlePage implements OnInit {
 */
 /*
   carrito(){
-
   this.dataLocal.guardarProducto(this.productos);
-
   }
-
   addToCart(product) {
     this.cartService.addProduct(product);
-
   }
 */
 /*
@@ -140,16 +233,10 @@ export class ArticlePage implements OnInit {
       console.log('My result', result);
 return this.http.get<RespuestaTopHeadlines>(`https://sharrys.com/admin/api/get_comments/?api_key=cda11rbycGLDVae49pzBCI0QuY5RsHFONkxMUvKwZ7SWXA8gfq&nid=${id}&user_id=${result}`).subscribe( resp => {
 //      console.log(resp)
-
 this.comentario.push( ...resp.comments );
-
-
     });
-
     });
-
   }
-
 */
   async presentAlertcomment() {
      const alert = await this.alertController.create({
@@ -185,19 +272,12 @@ this.comentario.push( ...resp.comments );
 
 /*
   sendComment(fComment: NgForm){
-
      let iduser = this.storage.get('token').then((result) => {
          console.log('My result', result);
-
      let id = this.route.snapshot.paramMap.get('id');
-
           console.log(this.commentUser.messaged);
           console.log(id);
           console.log(result);
-
-
-
-
           this.http.get(`https://sharrys.com/admin/api/subir_comment/?api_key=cda11rbycGLDVae49pzBCI0QuY5RsHFONkxMUvKwZ7SWXA8gfq&nid=${id}&user_id=${result}&content=${this.commentUser.messaged}`).subscribe(snap => {
                console.log(snap);
           //     this.listado = snap;
@@ -205,9 +285,7 @@ this.comentario.push( ...resp.comments );
           this.presentAlertcomment();
              });
             });
-
         }
-
 */
 
 

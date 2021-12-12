@@ -25,9 +25,7 @@
 </ion-header>
 
 <ion-content>
-
-  <form (ngSubmit)="pedido( fpedido )" #fLogin="ngForm" >
-
+<form (ngSubmit)="checkout( $event )">
    <ion-grid fixed>
      <ion-list class="bg-transparent">
       <ion-radio-group [(ngModel)]="pedidoCartapp.envio" name="envio" >
@@ -153,15 +151,13 @@
 
     <ion-row class="ion-align-items-center"  class="ion-text-wrap" style="margin-left: 5%;">
 
-
-
-
-
-       <ion-col size="6" *ngFor="let p of cart" style="border-bottom: 1px solid #ffffff38;" [(ngModel)]="pedidoCartapp.producto" name="producto">
-            <ion-row >
-<ion-col size="12">
-<p style="color:white;text-align:center">{{ p.news_title }}</p>
-  </ion-col>
+       <ion-col size="6" *ngFor="let p of cart"
+                style="border-bottom: 1px solid #ffffff38;"
+                name="producto">
+         <ion-row>
+            <ion-col size="12">
+               <p style="color:white;text-align:center">{{ p.news_title }}</p>
+            </ion-col>
 
 
 
@@ -242,7 +238,9 @@
      <ion-col size="6" style="padding: 0;">
        <div *ngIf=" pedidoCartapp.pago">
 
-       <ion-button color="success" size="small" (click)="checkout()"
+
+       <ion-button color="success" size="small"
+                   type="submit"
                     *ngIf=" pedidoCartapp.envio == 'Domicilio'">
 
          Hacer pedido
@@ -254,8 +252,9 @@
 
      <div *ngIf=" pedidoCartapp.pago">
 
-       <ion-button color="success" size="small" (click)="checkout()"
-                    *ngIf=" pedidoCartapp.envio == 'Recoger'">
+       <ion-button color="success" size="small"
+                   type="submit"
+                   *ngIf=" pedidoCartapp.envio == 'Recoger'">
          Hacer pedido
        </ion-button>
 
@@ -281,27 +280,7 @@
 
 
         </div>
-
-
-
-
-
           </ion-grid>
-
-
-
-
-
-
-
-
-
-
   </form>
-
-
-
-
-
 
 </ion-content>
