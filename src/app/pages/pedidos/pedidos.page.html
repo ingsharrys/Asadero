@@ -26,7 +26,6 @@
 
 <ion-content>
 <form (ngSubmit)="checkout( $event )">
-
    <ion-grid fixed>
      <ion-list class="bg-transparent">
       <ion-radio-group [(ngModel)]="pedidoCartapp.envio" name="envio" >
@@ -238,6 +237,7 @@
 
      <ion-col size="6" style="padding: 0;">
        <div *ngIf=" pedidoCartapp.pago">
+
 
        <ion-button color="success" size="small"
                    type="submit"
