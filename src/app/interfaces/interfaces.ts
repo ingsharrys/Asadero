@@ -64,14 +64,17 @@ export interface Articles {
  amount?: number;
  video_url?: string;
  price?: number;
-
+tienda_price?: number;
 
 
 
 //  publishedAt: string;
 }
 
+
 export interface Usuario {
+  user_id?: string;
+  name?: string;
   address?: string;
   addressdos?: string;
   _id?: string;
@@ -83,6 +86,7 @@ export interface Usuario {
   push?: string;
   concat?: string;
 }
+
 
 export interface Source {
 

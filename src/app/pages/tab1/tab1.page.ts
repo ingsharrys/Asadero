@@ -59,7 +59,7 @@ export class Tab1Page {
       cssClass: 'cart-modal'
     });
     modal.onWillDismiss().then(() => {
-      this.fab.nativeElement.classList.remove('animated', 'bounceOutLeft')
+  //    this.fab.nativeElement.classList.remove('animated', 'bounceOutLeft')
     //  this.animateCSS('bounceInLeft');
     });
     modal.present();

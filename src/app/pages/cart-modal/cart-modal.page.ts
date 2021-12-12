@@ -15,9 +15,9 @@ export class CartModalPage implements OnInit {
 
   cart: Article[] = [];
 //  User: Usuario[] = [];
-  User = { };
+  User: Usuario = { };
 
-  UpdatesUser = {
+  UpdatesUser: Usuario = {
   user_id: '',
   email: '',
   name: '',
@@ -25,7 +25,16 @@ export class CartModalPage implements OnInit {
   password:''
   };
 
-  constructor(private cartService: CartService, private modalCtrl: ModalController,
+  registerUser: Usuario = {
+      email: '',
+      password: '',
+      nombre: '',
+      address: '',
+      addressdos: ''
+    };
+
+  constructor(private cartService: CartService,
+              private modalCtrl: ModalController,
               private alertCtrl: AlertController,
               private storage: Storage,
               private articulosService: ArticulosService,) { }
@@ -44,7 +53,7 @@ export class CartModalPage implements OnInit {
            console.log('articulos', resp);
            this.User = resp.result[0];
       //    this.User = resp.result[0];
-      //    console.log(this.User);
+          console.log(this.User);
 
         } );
   });
@@ -53,15 +62,36 @@ export class CartModalPage implements OnInit {
 
 
 
+
   async userupdate( fUserupdate: NgForm ) {
+
+    let iduser = this.storage.get('token').then((result) => {
+        console.log('My result', result);
+
+        if( result <= 0 ){
+
+         let validos = this.articulosService.registro( this.UpdatesUser );
+
+      }else{
+
+         let valido = this.articulosService.cambiarDatosuser( this.UpdatesUser );
+    }
+  });
 
   //    if ( fRegistro.invalid ) { return; }
 
-      const valido = await this.articulosService.cambiarDatosuser( this.UpdatesUser );
+  //if ( fUserupdate.invalid ) { return; }
+
+
+
+
+
+
+
+
 
 
     }
-
 
 
 

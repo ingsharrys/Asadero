@@ -27,6 +27,7 @@ cart: Article[] = [];
 
   pedidoUser = {
   envio: '',
+
 };
 
   idmas: [];
@@ -34,7 +35,8 @@ cart: Article[] = [];
 
   pedidoCartapp = {
   envio: '',
-  pago: ''
+  pago: '',
+  especi: ''
 };
 entrega='';
 User = { };
