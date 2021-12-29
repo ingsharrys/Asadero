@@ -44,7 +44,8 @@
 
    <ion-input name="email"
               type="email"
-              style="background:white"
+              style="background:white;
+                     color:#000"
               [(ngModel)]="loginUser.email"
               required>
    </ion-input>
@@ -87,7 +88,8 @@ text-align: initial;">
          style="padding: 0;">
 
          <ion-input name="password"
-                    style="background:white"
+                    style="background:white;
+                           color:#000"
                      type="number"
                      [(ngModel)]="loginUser.password"
                      required></ion-input>
@@ -129,7 +131,7 @@ text-align: initial;">
                         size="small"
                         fill="outline"
                         style="font-size: 10pt;"
-                        color="dark"
+                        color="light"
                         (click)="mostrarLogin()">
               ¿Aun no tienes cuenta? Registrate aquí
             </ion-button>
@@ -193,7 +195,8 @@ text-align: initial;">
 
                 <ion-input name="email"
                             type="email"
-                            style="background:white"
+                            style="background:white;
+                                   color:#000"
                             [(ngModel)]="registerUser.email"
                             required></ion-input>
               </ion-col>
@@ -239,7 +242,8 @@ text-align: initial;">
 
                 <ion-input name="nombre"
                             type="text"
-                            style="background:white"
+                            style="background:white;
+                                   color:#000"
                             [(ngModel)]="registerUser.nombre"
                             required></ion-input>
               </ion-col>
@@ -287,8 +291,9 @@ text-align: initial;">
                       <ion-input name="address"
                                   type="text"
                                   placeholder="Ej: Cll 85"
-                                  style="background:white
-                                        ;font-size:10pt"
+                                  style="background:white;
+                                        color:#000;
+                                        font-size:10pt"
                                   [(ngModel)]="registerUser.address"
                                   required></ion-input>
                     </ion-col>
@@ -342,7 +347,8 @@ text-align: initial;">
 
                 <ion-input name="number"
                             type="text"
-                            style="background:white"
+                            style="background:white;
+                                   color:#000"
                             [(ngModel)]="registerUser.password"
                             required></ion-input>
               </ion-col>
@@ -385,7 +391,7 @@ text-align: initial;">
                           size="small"
                           fill="outline"
                           style="font-size: 10pt;"
-                          color="dark"
+                          color="light"
                           (click)="mostrarRegistro()">
                 Volver al Login
               </ion-button>
